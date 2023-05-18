@@ -145,28 +145,29 @@ let fiveDayForecastSection = function (cityName) {
                 })
                 .then(function (responce) {
                     console.log(responce);
+
+                    //get data from this responce and apply to 5 day forecast weather section
+                    for (let i = 0; i <= 5; i++) {
+                        //add date to the next 5 days
+                        let futureDate = $("#date" + i);
+                        date = moment().add(i, "d").format("M/D/YYYY");
+                        futureDate.text(date);
+
+                        // add icon to 5 day forecast
+                        let futureIcon = $("#icon" + i);
+                        let futureIconCode = responce.list[i].weather[0].icon;
+                        console.log(futureIconCode);
+                        futureIcon.attr("src", `https://openweathermap.org/img/wn/${futureIconCode}@2x.png`);
+
+                        // add temp to 5 day forecast
+                        let futureTemp = $("#temp" + i);
+                        futureTemp.text("Temp: " + responce.list[i].main.temp + "\u00B0F");
+
+                        //add humidity to 5 day foreacast
+                        let futureHumidity = $("#hum" + i);
+                        futureHumidity.text("Humidity: " + responce.list[i].main.humidity + "%");
+                    }
                 })
-            //get data from this responce and apply to 5 day forecast weather section
-            for (let i = 0; i <= 5; i++) {
-                //add date to the next 5 days
-                let futureDate = $("#date" + i);
-                date = moment().add(i, "d").format("M/D/YYYY");
-                futureDate.text(date);
-
-                // add icon to 5 day forecast
-                let futureIcon = $("#icon" + i);
-                let futureIconCode = responce.list[i].weather[0].icon;
-                console.log(futureIconCode);
-                futureIcon.attr("src", `https://openweathermap.org/img/wn/${futureIconCode}@2x.png`);
-
-                // add temp to 5 day forecast
-                let futureTemp = $("#temp" + i);
-                futureTemp.text("Temp: " + responce.list[i].main.temp + "\u00B0F");
-
-                //add humidity to 5 day foreacast
-                let futureHumidity = $("#hum" + i);
-                futureHumidity.text("Humidity: " + responce.list[i].main.humidity + "%");
-            }
         })
 };
 
