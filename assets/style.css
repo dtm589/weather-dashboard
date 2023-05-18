@@ -60,6 +60,7 @@ tr {
     height: 25px;
     margin-bottom: 20px;
     font-size: 14px;
+    color: black;
 }
 
 body {
@@ -91,6 +92,9 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    color: white;
+    font-size: 24px;
+    font-weight: 200;
 }
 
 
@@ -122,4 +126,14 @@ body {
     border: 2px solid black;
     width: 20%;
     padding: 7px 0 0 7px;
+}
+
+#current-title {
+    color: white;
+    font-weight: 500;
+    font-size: 44px;
+}
+
+#search-history-container {
+    color: black;
 }

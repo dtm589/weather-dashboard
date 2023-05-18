@@ -102,24 +102,20 @@ let currentWeatherSection = function (cityName) {
                 currentTitle.text(`${cityName} (${currentDay})`);
                 let currentIcon = $("#current-weather-icon");
                 currentIcon.addClass("current-weather-icon");
-                let currentIconCode = responce.current.weather[0].icon;
+                let currentIconCode = responce.icon;
                 currentIcon.attr("src", `https://openweathermap.org/img/wn/${currentIconCode}@2x.png`);
 
                 // add current temp
                 let currentTemperature = $("#current-temperature");
-                currentTemperature.text("Temperature: " + responce.current.temp + " /u00B0F");
+                currentTemperature.text("Temperature: " + responce.temp + " /u00B0F");
 
                 // add current humidity
                 let currentHumidity = $("#current-humidity");
-                currentHumidity.text("Humidity : " + responce.current.humidity + "%");
+                currentHumidity.text("Humidity : " + responce.humidity + "%");
 
                 //add current wind speed
                 let currentWindSpeed = $("#current-wind-speed");
-                currentWindSpeed.text("Wind Speed: " + responce.current.wind_speed + " MPH");
-
-                //add UV index
-                let currentUvIndex = $("#current-uv-index");
-                currentUvIndex.text("UV Index: " + responce.current.uvi);
+                currentWindSpeed.text("Wind Speed: " + responce.wind_speed + " MPH");
             })
         })
     
