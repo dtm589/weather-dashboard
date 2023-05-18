@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Derek Marchese">
+    <meta name="description" content="Search Weather Forecast based on city">
+    <meta name="keywords" content="HTML, CSS, JavaScript, Third Party API">
+    <!-- standard bootstrap stylesheet -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- style sheet for save icon -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <!-- google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/style.css">
+    <title>Weather Dashboard</title>
+</head>
+
+<body>
+    <header class="head">
+        <section class="head-body">
+            <div class="container">
+                <h1 class="title">Weather Dashboard</h1>
+            </div>
+        </section>
+    </header>
+    <main id="info-section">
+        <section class="container">
+            <!-- The two columns, 1 for the searches and 1 for the results-->
+            <div class="columns">
+                <!-- Search area on the left-->
+                <div class="column is-one-quarter">
+                    <form>
+                        <input id="city-input" class="input" type="text" placeholder="Search a city name">
+                        <button id="submit" class="button" type="submit">Search</button>
+                    </form>
+                    <!-- Past search cities-->
+                    <div class="box table-box">
+                        <div class="table-container">
+                            <table id="city-list" class="table"></table>
+                        </div>
+                    </div>
+                </div>
+                <!-- Will display data here-->
+                <div class="column">
+                    <div id="weather-data" class="columns box ">
+                        <div class="column current-city-data">
+
+                        </div>
+                        <div class="column">
+                            <div id="icon">
+                                <img src="#">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 5 day forecast will go here-->
+                    <div class="container">
+                        <h2>5-Day Forecast:</h2>
+                        <div class="columns">
+                            <div class="card">
+                                <div id="day1" class="card-content">
+                                    <h3 id="date1">Day 1</h3>
+                                    <img src="#">
+                                    <h4 id="temp1">Temp: </h4>
+                                    <h4 id="hum1">Humidity: </h4>
+                                </div>
+                                <div id="day2" class="card-content">
+                                    <h3 id="date2" class="has-text-white"></h3>
+                                    <img src="#">
+                                    <h4 id="temp2" class="has-text-white"></h4>
+                                    <h4 id="hum2" class="has-text-white"></h4>
+                                </div>
+                                <div id="day3" class="card-content">
+                                    <h3 id="date3" class="has-text-white"></h3>
+                                    <img src="#">
+                                    <h4 id="temp3" class="has-text-white"></h4>
+                                    <h4 id="hum3" class="has-text-white"></h4>
+                                </div>
+                                <div id="day4" class="card-content">
+                                    <h3 id="date4" class="has-text-white"></h3>
+                                    <img src="#">
+                                    <h4 id="temp4" class="has-text-white"></h4>
+                                    <h4 id="hum4" class="has-text-white"></h4>
+                                </div>
+                                <div id="day5" class="card-content">
+                                    <h3 id="date5" class="has-text-white"></h3>
+                                    <img src="#">
+                                    <h4 id="temp5" class="has-text-white"></h4>
+                                    <h4 id="hum5" class="has-text-white"></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="./assets/script.js"></script>
+</body>
+
+</html>
