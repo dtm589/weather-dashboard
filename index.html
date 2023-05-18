@@ -34,21 +34,19 @@
             <div class="columns">
                 <!-- Search area on the left-->
                 <div class="column is-one-quarter">
-                    <form>
+                    <form id="search-form">
                         <input id="city-input" class="input" type="text" placeholder="Search a city name">
                         <button id="submit" class="button" type="submit">Search</button>
                     </form>
                     <!-- Past search cities-->
-                    <div class="box table-box">
-                        <div class="table-container">
-                            <table id="city-list" class="table"></table>
-                        </div>
+                    <div id="search-history-container">
+
                     </div>
                 </div>
                 <!-- Will display data here-->
                 <div class="column">
-                    <div id="weather-data" class="columns box ">
-                        <div class="column current-city-data">
+                    <div id="weather-data" class="columns">
+                        <div class="column">
 
                         </div>
                         <div class="column">
@@ -69,28 +67,28 @@
                                     <h4 id="hum1">Humidity: </h4>
                                 </div>
                                 <div id="day2" class="card-content">
-                                    <h3 id="date2" class="has-text-white"></h3>
+                                    <h3 id="date2">Day 2</h3>
                                     <img src="#">
-                                    <h4 id="temp2" class="has-text-white"></h4>
-                                    <h4 id="hum2" class="has-text-white"></h4>
+                                    <h4 id="temp2">Temp: </h4>
+                                    <h4 id="hum2">Humidity: </h4>
                                 </div>
                                 <div id="day3" class="card-content">
-                                    <h3 id="date3" class="has-text-white"></h3>
+                                    <h3 id="date3">Day 3</h3>
                                     <img src="#">
-                                    <h4 id="temp3" class="has-text-white"></h4>
-                                    <h4 id="hum3" class="has-text-white"></h4>
+                                    <h4 id="temp3">Temp: </h4>
+                                    <h4 id="hum3">Humidity: </h4>
                                 </div>
                                 <div id="day4" class="card-content">
-                                    <h3 id="date4" class="has-text-white"></h3>
+                                    <h3 id="date4">Day 4</h3>
                                     <img src="#">
-                                    <h4 id="temp4" class="has-text-white"></h4>
-                                    <h4 id="hum4" class="has-text-white"></h4>
+                                    <h4 id="temp4">Temp: </h4>
+                                    <h4 id="hum4">Humidity: </h4>
                                 </div>
                                 <div id="day5" class="card-content">
-                                    <h3 id="date5" class="has-text-white"></h3>
+                                    <h3 id="date5">Day 5</h3>
                                     <img src="#">
-                                    <h4 id="temp5" class="has-text-white"></h4>
-                                    <h4 id="hum5" class="has-text-white"></h4>
+                                    <h4 id="temp5">Temp: </h4>
+                                    <h4 id="hum5">Humidity: </h4>
                                 </div>
                             </div>
                         </div>
@@ -99,6 +97,7 @@
             </div>
         </section>
     </main>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="./assets/script.js"></script>
 </body>
 
