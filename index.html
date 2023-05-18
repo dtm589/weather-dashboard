@@ -8,6 +8,7 @@
     <meta name="author" content="Derek Marchese">
     <meta name="description" content="Search Weather Forecast based on city">
     <meta name="keywords" content="HTML, CSS, JavaScript, Third Party API">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css">
     <!-- standard bootstrap stylesheet -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <!-- style sheet for save icon -->
@@ -46,13 +47,19 @@
                 <!-- Will display data here-->
                 <div class="column">
                     <div id="weather-data" class="columns">
-                        <div class="column">
-
+                        <div class="column current-title-container">
+                            <h2 id="current-title"></h2>
+                            <img id="current-weather-icon" src="" alt="">
                         </div>
                         <div class="column">
-                            <div id="icon">
-                                <img src="#">
-                            </div>
+                            <!-- current weather temperature -->
+                            <p class="current-temperature" id="current-temperature"></p>
+                            <!-- current weather humidity -->
+                            <p class="current-humidity" id="current-humidity"></p>
+                            <!-- current weather wind speed -->
+                            <p class="current-wind-speed" id="current-wind-speed"></p>
+                            <!-- current weather uv index -->
+                            <p class="current-uv-index" id="current-uv-index"></p>
                         </div>
                     </div>
                     <!-- 5 day forecast will go here-->
@@ -98,6 +105,7 @@
         </section>
     </main>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/script.js"></script>
 </body>
 
