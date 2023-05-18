@@ -84,7 +84,7 @@ let currentWeatherSection = function (cityName) {
             let cityLon = responce.coord.lon;
             let cityLat = responce.coord.lat;
 
-            fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${cityLat}&lon=${cityLon}&appid=3441eea49fb0c2d562c42313024e998f`)
+            fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${cityLat}&lon=${cityLon}&units=imperial&appid=3441eea49fb0c2d562c42313024e998f`)
             .then(function(responce) {
                 return responce.json();
             })
@@ -102,20 +102,20 @@ let currentWeatherSection = function (cityName) {
                 currentTitle.text(`${cityName} (${currentDay})`);
                 let currentIcon = $("#current-weather-icon");
                 currentIcon.addClass("current-weather-icon");
-                let currentIconCode = responce.icon;
+                let currentIconCode = responce.weather[0].icon;
                 currentIcon.attr("src", `https://openweathermap.org/img/wn/${currentIconCode}@2x.png`);
 
                 // add current temp
                 let currentTemperature = $("#current-temperature");
-                currentTemperature.text("Temperature: " + responce.temp + " /u00B0F");
+                currentTemperature.text("Temperature: " + responce.main.temp + "\u00B0F");
 
                 // add current humidity
                 let currentHumidity = $("#current-humidity");
-                currentHumidity.text("Humidity : " + responce.humidity + "%");
+                currentHumidity.text("Humidity : " + responce.main.humidity + "%");
 
                 //add current wind speed
                 let currentWindSpeed = $("#current-wind-speed");
-                currentWindSpeed.text("Wind Speed: " + responce.wind_speed + " MPH");
+                currentWindSpeed.text("Wind Speed: " + responce.wind.speed + " MPH");
             })
         })
     
@@ -127,5 +127,15 @@ let currentWeatherSection = function (cityName) {
         alert("We could not find the city you searched for. Please try again with a valid city.");
     });
 };
+
+// called when history entry is clicked
+$("#search-history-container").on("click", "p", function() {
+    let previousCityName = $(this).text();
+    currentWeatherSection(previousCityName);
+    fiveDayForecastSection(previousCityName);
+
+    let previousCityClicked = $(this);
+    previousCityClicked.remove();
+});
 
 loadSearchHistory();
