@@ -50,7 +50,7 @@ let loadSearchHistory = function () {
 };
 
 //button event listener
-$("#search-form").on("sumbit", function (event) {
+$("#search-form").on("submit", function (event) {
     event.preventDefault();
 
     //get name of city
@@ -66,3 +66,5 @@ $("#search-form").on("sumbit", function (event) {
         fiveDayForecastSection(cityName);
     }
 });
+
+loadSearchHistory();
