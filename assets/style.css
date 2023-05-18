@@ -30,12 +30,6 @@ tr {
     margin: 5px;
 }
 
-.card {
-    background-color: #a5b1c2;
-    margin: 3px;
-    min-height: 300px;
-}
-
 .head {
     background: linear-gradient(to right,
             #2b235a,
@@ -120,6 +114,9 @@ body {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
+    background-color: #2b235a;
+    margin: 3px;
+    min-height: 300px;
 }
 
 .card-content {
