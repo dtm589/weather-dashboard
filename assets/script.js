@@ -85,51 +85,93 @@ let currentWeatherSection = function (cityName) {
             let cityLat = responce.coord.lat;
 
             fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${cityLat}&lon=${cityLon}&units=imperial&appid=3441eea49fb0c2d562c42313024e998f`)
-            .then(function(responce) {
-                return responce.json();
-            })
-            //get data from this responce and apply to current weather section
-            .then(function(responce) {
-                searchHistoryList(cityName);
+                .then(function (responce) {
+                    return responce.json();
+                })
+                //get data from this responce and apply to current weather section
+                .then(function (responce) {
+                    searchHistoryList(cityName);
 
-                //add weather container
-                let currentWeatherConainer = $("#weather-data");
-                currentWeatherConainer.addClass("current-weather-container");
+                    //add weather container
+                    let currentWeatherConainer = $("#weather-data");
+                    currentWeatherConainer.addClass("current-weather-container");
 
-                //add city name, date, and icon to section
-                let currentTitle = $("#current-title");
-                let currentDay = moment().format("M/D/YYYY");
-                currentTitle.text(`${cityName} (${currentDay})`);
-                let currentIcon = $("#current-weather-icon");
-                currentIcon.addClass("current-weather-icon");
-                let currentIconCode = responce.weather[0].icon;
-                currentIcon.attr("src", `https://openweathermap.org/img/wn/${currentIconCode}@2x.png`);
+                    //add city name, date, and icon to section
+                    let currentTitle = $("#current-title");
+                    let currentDay = moment().format("M/D/YYYY");
+                    currentTitle.text(`${cityName} (${currentDay})`);
+                    let currentIcon = $("#current-weather-icon");
+                    currentIcon.addClass("current-weather-icon");
+                    let currentIconCode = responce.weather[0].icon;
+                    currentIcon.attr("src", `https://openweathermap.org/img/wn/${currentIconCode}@2x.png`);
 
-                // add current temp
-                let currentTemperature = $("#current-temperature");
-                currentTemperature.text("Temperature: " + responce.main.temp + "\u00B0F");
+                    // add current temp
+                    let currentTemperature = $("#current-temperature");
+                    currentTemperature.text("Temperature: " + responce.main.temp + "\u00B0F");
 
-                // add current humidity
-                let currentHumidity = $("#current-humidity");
-                currentHumidity.text("Humidity : " + responce.main.humidity + "%");
+                    // add current humidity
+                    let currentHumidity = $("#current-humidity");
+                    currentHumidity.text("Humidity : " + responce.main.humidity + "%");
 
-                //add current wind speed
-                let currentWindSpeed = $("#current-wind-speed");
-                currentWindSpeed.text("Wind Speed: " + responce.wind.speed + " MPH");
-            })
+                    //add current wind speed
+                    let currentWindSpeed = $("#current-wind-speed");
+                    currentWindSpeed.text("Wind Speed: " + responce.wind.speed + " MPH");
+                })
         })
-    
-    .catch(function(error) {
-        //reset serach input
-        $("#city-input").val("");
 
-        // alert there was an error
-        alert("We could not find the city you searched for. Please try again with a valid city.");
-    });
+        .catch(function (error) {
+            //reset serach input
+            $("#city-input").val("");
+
+            // alert there was an error
+            alert("We could not find the city you searched for. Please try again with a valid city.");
+        });
+};
+
+let fiveDayForecastSection = function (cityName) {
+    //get and data from API
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`)
+        .then(function (responce) {
+            return responce.json();
+        })
+        //get lattitude and longtitude
+        .then(function (responce) {
+            let cityLon = responce.coord.lon;
+            let cityLat = responce.coord.lat;
+
+            fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${cityLat}&lon=${cityLon}&units=imperial&appid=${apiKey}`)
+                .then(function (responce) {
+                    return responce.json();
+                })
+                .then(function (responce) {
+                    console.log(responce);
+                })
+            //get data from this responce and apply to 5 day forecast weather section
+            for (let i = 0; i <= 5; i++) {
+                //add date to the next 5 days
+                let futureDate = $("#date" + i);
+                date = moment().add(i, "d").format("M/D/YYYY");
+                futureDate.text(date);
+
+                // add icon to 5 day forecast
+                let futureIcon = $("#icon" + i);
+                let futureIconCode = responce.list[i].weather[0].icon;
+                console.log(futureIconCode);
+                futureIcon.attr("src", `https://openweathermap.org/img/wn/${futureIconCode}@2x.png`);
+
+                // add temp to 5 day forecast
+                let futureTemp = $("#temp" + i);
+                futureTemp.text("Temp: " + responce.list[i].main.temp + "\u00B0F");
+
+                //add humidity to 5 day foreacast
+                let futureHumidity = $("#hum" + i);
+                futureHumidity.text("Humidity: " + responce.list[i].main.humidity + "%");
+            }
+        })
 };
 
 // called when history entry is clicked
-$("#search-history-container").on("click", "p", function() {
+$("#search-history-container").on("click", "p", function () {
     let previousCityName = $(this).text();
     currentWeatherSection(previousCityName);
     fiveDayForecastSection(previousCityName);
